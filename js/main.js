@@ -1,6 +1,11 @@
+///////////////////////////////////////////////////////////////////////////////////////
+/*  Desenvolvido por                                
+    Henrique Marchioni  -  Tecnologia em Sistemas para internet - Fatec Rubens lara
+*//////////////////////////////////////////////////////////////////////////////////////
+
 const dino = document.querySelector('.dino');
 const background = document.querySelector('.background');
-const titulo = document.querySelector('h1');
+
 let position=0;            // posição inicial dinosauro 0
 let estaPulando = false; // estado do dino (começa no chão sem pular)
 
@@ -23,7 +28,7 @@ function pular() {               // Função que realiza o pulo do Dinosauro
         position+=20;              //sobe de 20 em 20px 
         dino.style.bottom = position + 'px';
         // == parada topo ========
-        if (position >=150) {     // momento de parada do pulo (atinge 150px de altura)
+        if (position >=160) {     // momento de parada do pulo (atinge 160px de altura)
             clearInterval(Pulo);
             // == descida =======  
             let descida = setInterval(()=>{  // inicio descida
@@ -44,7 +49,7 @@ function pular() {               // Função que realiza o pulo do Dinosauro
 function startCactus () {   // Função que cria os cactus e os move
     let positionCactus = 1000;    
     const cactus = document.createElement('div'); 
-    let randowTime = Math.random()*6000;  // -> tempo de criação de cactus aleatorio (quando menor mais dificil)
+    let randowTime = Math.random()*5000;  // -> tempo de criação de cactus aleatorio (quando menor mais dificil)
 
     cactus.classList.add('cactus');  // -> adc a classe a div cactus
     background.appendChild(cactus);  // -> colocado dentro da div background
@@ -59,7 +64,7 @@ function startCactus () {   // Função que cria os cactus e os move
         // GAME - OVER ====
         else if (positionCactus > 0 && positionCactus < 60 && position < 60){ 
             clearInterval(moveCactus);
-            document.body.innerHTML = titulo.innerText = "GAME OVER"
+            document.body.innerHTML = innerHTML = "<h1> GAME OVER </h1>" 
             
 
         };
@@ -72,6 +77,6 @@ function startCactus () {   // Função que cria os cactus e os move
 
 
 startCactus();
-document.addEventListener('keyup',apertarTecla);
+document.addEventListener('keydown',apertarTecla);
 
 //console.log(dino);
